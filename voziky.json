@@ -1,0 +1,353 @@
+{
+  "modely": [
+    {
+      "id_model": "M_01",
+      "nazev_modelu": "Vozík",
+      "zakladni_cena_czk": 15000,
+      "povinna_kategorie": "BOČNICE",
+      "vyloucena_kategorie": "HYDRAULIKA",
+      "naprav": 1,
+      "popis": "Klasika pro všechno."
+    },
+    {
+      "id_model": "M_02",
+      "nazev_modelu": "Sklápěč",
+      "zakladni_cena_czk": 25000,
+      "povinna_kategorie": "BOČNICE,HYDRAULIKA",
+      "vyloucena_kategorie": "NASTAVBA",
+      "naprav": 2,
+      "popis": "Sklápění dozadu nebo do stran."
+    },
+    {
+      "id_model": "M_03",
+      "nazev_modelu": "Autopřepravník",
+      "zakladni_cena_czk": 18000,
+      "povinna_kategorie": "NAJEZDY,NAVIJAK,BOČNICE",
+      "vyloucena_kategorie": "HYDRAULIKA",
+      "naprav": 2,
+      "popis": "Nízký úhel pro auta."
+    },
+    {
+      "id_model": "M_04",
+      "nazev_modelu": "Multitransportér",
+      "zakladni_cena_czk": 22000,
+      "povinna_kategorie": "BOČNICE",
+      "vyloucena_kategorie": "HYDRAULIKA",
+      "naprav": 2,
+      "popis": "Univerzál s velkou ložnou plochou."
+    }
+  ],
+  "rozmery": [
+    {
+      "id_rozmer": "D_01",
+      "id_model": "M_01",
+      "delka_cm": 201,
+      "sirka_cm": 125,
+      "plocha_m2": 2.51,
+      "priplatek_czk": 0,
+      "kategorie_velikosti": "Kompakt"
+    },
+    {
+      "id_rozmer": "D_02",
+      "id_model": "M_01",
+      "delka_cm": 201,
+      "sirka_cm": 145,
+      "plocha_m2": 2.91,
+      "priplatek_czk": 1200,
+      "kategorie_velikosti": "Kompakt"
+    },
+    {
+      "id_rozmer": "D_03",
+      "id_model": "M_01,M_02",
+      "delka_cm": 256,
+      "sirka_cm": 130,
+      "plocha_m2": 3.33,
+      "priplatek_czk": 2500,
+      "kategorie_velikosti": "Standard"
+    },
+    {
+      "id_rozmer": "D_04",
+      "id_model": "M_01,M_02",
+      "delka_cm": 256,
+      "sirka_cm": 150,
+      "plocha_m2": 3.84,
+      "priplatek_czk": 3200,
+      "kategorie_velikosti": "Standard"
+    },
+    {
+      "id_rozmer": "D_05",
+      "id_model": "M_01,M_02",
+      "delka_cm": 300,
+      "sirka_cm": 150,
+      "plocha_m2": 4.5,
+      "priplatek_czk": 4800,
+      "kategorie_velikosti": "Standard Plus"
+    },
+    {
+      "id_rozmer": "D_06",
+      "id_model": "M_01,M_02",
+      "delka_cm": 300,
+      "sirka_cm": 180,
+      "plocha_m2": 5.4,
+      "priplatek_czk": 6100,
+      "kategorie_velikosti": "Standard Plus"
+    },
+    {
+      "id_rozmer": "D_07",
+      "id_model": "M_02",
+      "delka_cm": 350,
+      "sirka_cm": 150,
+      "plocha_m2": 5.25,
+      "priplatek_czk": 7200,
+      "kategorie_velikosti": "Profi"
+    },
+    {
+      "id_rozmer": "D_08",
+      "id_model": "M_02,M_03",
+      "delka_cm": 350,
+      "sirka_cm": 180,
+      "plocha_m2": 6.3,
+      "priplatek_czk": 8500,
+      "kategorie_velikosti": "Profi"
+    },
+    {
+      "id_rozmer": "D_09",
+      "id_model": "M_02,M_03,M_04",
+      "delka_cm": 400,
+      "sirka_cm": 180,
+      "plocha_m2": 7.2,
+      "priplatek_czk": 10500,
+      "kategorie_velikosti": "Profi Long"
+    },
+    {
+      "id_rozmer": "D_10",
+      "id_model": "M_02,M_03,M_04",
+      "delka_cm": 400,
+      "sirka_cm": 200,
+      "plocha_m2": 8.0,
+      "priplatek_czk": 12000,
+      "kategorie_velikosti": "Profi Long"
+    },
+    {
+      "id_rozmer": "D_11",
+      "id_model": "M_03,M_04",
+      "delka_cm": 450,
+      "sirka_cm": 200,
+      "plocha_m2": 9.0,
+      "priplatek_czk": 14500,
+      "kategorie_velikosti": "Transport"
+    },
+    {
+      "id_rozmer": "D_12",
+      "id_model": "M_03,M_04",
+      "delka_cm": 500,
+      "sirka_cm": 220,
+      "plocha_m2": 11.0,
+      "priplatek_czk": 18000,
+      "kategorie_velikosti": "Transport Max"
+    }
+  ],
+  "podvozky": [
+    {
+      "id_podvozek": "P_01",
+      "brzdeny": "NE",
+      "celkova_hmotnost_kg": 750,
+      "priplatek_czk": 0,
+      "min_plocha_m2": 0.0,
+      "max_plocha_m2": 4.0
+    },
+    {
+      "id_podvozek": "P_02",
+      "brzdeny": "ANO",
+      "celkova_hmotnost_kg": 1350,
+      "priplatek_czk": 9000,
+      "min_plocha_m2": 2.5,
+      "max_plocha_m2": 4.0
+    },
+    {
+      "id_podvozek": "P_03",
+      "brzdeny": "ANO",
+      "celkova_hmotnost_kg": 2000,
+      "priplatek_czk": 16500,
+      "min_plocha_m2": 3.3,
+      "max_plocha_m2": 7.5
+    },
+    {
+      "id_podvozek": "P_04",
+      "brzdeny": "ANO",
+      "celkova_hmotnost_kg": 2700,
+      "priplatek_czk": 21000,
+      "min_plocha_m2": 6.0,
+      "max_plocha_m2": 7.5
+    },
+    {
+      "id_podvozek": "P_05",
+      "brzdeny": "ANO",
+      "celkova_hmotnost_kg": 3000,
+      "priplatek_czk": 26000,
+      "min_plocha_m2": 8.0,
+      "max_plocha_m2": 10.0
+    },
+    {
+      "id_podvozek": "P_06",
+      "brzdeny": "ANO",
+      "celkova_hmotnost_kg": 3500,
+      "priplatek_czk": 38000,
+      "min_plocha_m2": 10.5,
+      "max_plocha_m2": 15.0
+    }
+  ],
+  "bocnice": [
+    {
+      "id_bocnice": "B_01",
+      "id_model": "M_01,M_03,M_04",
+      "nazev": "Valník",
+      "priplatek_czk": 2000,
+      "min_plocha_m2": 0.0,
+      "max_plocha_m2": 3.5
+    },
+    {
+      "id_bocnice": "B_02",
+      "id_model": "M_01,M_02,M_04",
+      "nazev": "Bočnice 30 cm",
+      "priplatek_czk": 9000,
+      "min_plocha_m2": 0.0,
+      "max_plocha_m2": 3.5
+    },
+    {
+      "id_bocnice": "B_03",
+      "id_model": "M_01,M_02,M_04",
+      "nazev": "Bočnice 40 cm",
+      "priplatek_czk": 12000,
+      "min_plocha_m2": 0.0,
+      "max_plocha_m2": 3.5
+    },
+    {
+      "id_bocnice": "B_04",
+      "id_model": "M_01,M_03,M_04",
+      "nazev": "Valník",
+      "priplatek_czk": 4000,
+      "min_plocha_m2": 3.51,
+      "max_plocha_m2": 6.5
+    },
+    {
+      "id_bocnice": "B_05",
+      "id_model": "M_01,M_02,M_04",
+      "nazev": "Bočnice 30 cm",
+      "priplatek_czk": 11000,
+      "min_plocha_m2": 3.51,
+      "max_plocha_m2": 6.5
+    },
+    {
+      "id_bocnice": "B_06",
+      "id_model": "M_01,M_02,M_04",
+      "nazev": "Bočnice 40 cm",
+      "priplatek_czk": 14000,
+      "min_plocha_m2": 3.51,
+      "max_plocha_m2": 6.5
+    },
+    {
+      "id_bocnice": "B_07",
+      "id_model": "M_01,M_03,M_04",
+      "nazev": "Valník",
+      "priplatek_czk": 8000,
+      "min_plocha_m2": 6.51,
+      "max_plocha_m2": 12.0
+    },
+    {
+      "id_bocnice": "B_08",
+      "id_model": "M_01,M_02,M_04",
+      "nazev": "Bočnice 30 cm",
+      "priplatek_czk": 20000,
+      "min_plocha_m2": 6.51,
+      "max_plocha_m2": 12.0
+    },
+    {
+      "id_bocnice": "B_09",
+      "id_model": "M_01,M_02,M_04",
+      "nazev": "Bočnice 40 cm",
+      "priplatek_czk": 28000,
+      "min_plocha_m2": 6.51,
+      "max_plocha_m2": 12.0
+    }
+  ],
+  "prislusenstvi": [
+    {
+      "id_doplnek": "OPT_03",
+      "id_model": "M_02",
+      "kat": "HYDRAULIKA",
+      "nazev": "Ruční pumpa",
+      "cena_czk": 6500,
+      "vyzaduje_id": null,
+      "vylucuje_id": "OPT_04",
+      "poznamka": "Pouze pro sklápěč",
+      "image": "images/hydra.png"
+    },
+    {
+      "id_doplnek": "OPT_04",
+      "id_model": "M_02",
+      "kat": "HYDRAULIKA",
+      "nazev": "Elektro čerpadlo",
+      "cena_czk": 18000,
+      "vyzaduje_id": null,
+      "vylucuje_id": "OPT_03",
+      "poznamka": "Vyžaduje baterii",
+      "image": "images/hydra_e.png"
+    },
+    {
+      "id_doplnek": "OPT_05",
+      "id_model": "M_01,M_02,M_03,M_04",
+      "kat": "NAJEZDY",
+      "nazev": "Hliníkové rampy",
+      "cena_czk": 9500,
+      "vyzaduje_id": null,
+      "vylucuje_id": null,
+      "poznamka": "Ukládací pod plochu",
+      "image": "images/rampa.png"
+    },
+    {
+      "id_doplnek": "OPT_09",
+      "id_model": "M_03",
+      "kat": "NAVIJAK",
+      "nazev": "Ruční naviják",
+      "cena_czk": 4500,
+      "vyzaduje_id": null,
+      "vylucuje_id": null,
+      "poznamka": "Povinné pro autopřepravník",
+      "image": "images/navijak.png"
+    },
+    {
+      "id_doplnek": "OPT_11",
+      "id_model": "M_01,M_02,M_03,M_04",
+      "kat": "DOPLNEK",
+      "nazev": "Opěrné kolečko",
+      "cena_czk": 1000,
+      "vyzaduje_id": null,
+      "vylucuje_id": null,
+      "poznamka": "Plechové, 48 mm, s držákem",
+      "image": "images/kolecko.png"
+    },
+    {
+      "id_doplnek": "OPT_12",
+      "id_model": "M_01,M_02,M_03,M_04",
+      "kat": "DOPLNEK",
+      "nazev": "Podpěrné nohy 2 ks",
+      "cena_czk": 800,
+      "vyzaduje_id": null,
+      "vylucuje_id": null,
+      "poznamka": "Plechové, 48 mm, s držákem",
+      "image": "images/nohy.png"
+    },
+    {
+      "id_doplnek": "OPT_13",
+      "id_model": "M_01,M_02,M_03,M_04",
+      "kat": "DOPLNEK",
+      "nazev": "Klín zakládací",
+      "cena_czk": 150,
+      "vyzaduje_id": null,
+      "vylucuje_id": null,
+      "poznamka": "Plastový s držákem",
+      "image": "images/klin.png"
+    }
+  ]
+}
