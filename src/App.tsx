@@ -34,10 +34,9 @@ export default function App() {
 
   // Load data
   useEffect(() => {
-    fetch('/voziky.json')
-      .then((res) => res.json())
-      .then((json: VozikyData) => setData(json))
-      .catch(() => console.error('Failed to load voziky.json'));
+    import('../voziky.json')
+      .then((module) => setData(module.default as unknown as VozikyData))
+      .catch((err) => console.error('Failed to load voziky.json', err));
   }, []);
 
   // IntersectionObserver for active section tracking
