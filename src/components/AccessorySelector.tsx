@@ -94,7 +94,7 @@ export function AccessorySelector({
                   >
                     {acc.image && (
                       <div className="accessory-image">
-                        <img src={`/${acc.image}`} alt={acc.nazev} loading="lazy" />
+                        <img src={`${import.meta.env.BASE_URL}${acc.image}`} alt={acc.nazev} loading="lazy" />
                       </div>
                     )}
                     <div className="acc-checkbox">

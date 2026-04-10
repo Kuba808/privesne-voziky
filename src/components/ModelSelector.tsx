@@ -30,7 +30,7 @@ export function ModelSelector({ models, selected, onSelect }: ModelSelectorProps
                 <div className="card-check-inner" />
               </div>
               <img
-                src={`/images/${model.id_model}.png`}
+                src={`${import.meta.env.BASE_URL}images/${model.id_model}.png`}
                 alt={model.nazev_modelu}
                 className="model-card-img"
                 loading="lazy"

@@ -136,7 +136,7 @@ export function RPGVisualizer({ selectedModel, selectedBocnice, selectedAccessor
       {/* Main model image */}
       <img
         ref={imageRef}
-        src={`/images/${selectedModel.id_model}.png`}
+        src={`${import.meta.env.BASE_URL}images/${selectedModel.id_model}.png`}
         alt={selectedModel.nazev_modelu}
         className="rpg-model-image"
         onLoad={handleImageLoad}
@@ -155,7 +155,7 @@ export function RPGVisualizer({ selectedModel, selectedBocnice, selectedAccessor
             style={{ ...pos.box, position: 'absolute' }}
           >
             <div className="rpg-acc-placeholder" style={{ background: 'transparent' }}>
-               <img src={`/${acc.image}`} alt={acc.nazev} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+               <img src={`${import.meta.env.BASE_URL}${acc.image}`} alt={acc.nazev} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </div>
             <div className="rpg-acc-label">{acc.nazev}</div>
           </div>
