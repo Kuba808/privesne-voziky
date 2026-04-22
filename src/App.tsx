@@ -183,8 +183,8 @@ function AppContent({
 
       {/* Main content */}
       <main className="main-layout">
-        {/* Left: RPG Visualizer */}
-        <aside className="visualizer-panel" aria-label="Vizualizace konfigurace">
+        {/* Left: RPG Visualizer (desktop/tablet) */}
+        <aside className="visualizer-panel visualizer-panel--desktop" aria-label="Vizualizace konfigurace">
           <RPGVisualizer
             selectedModel={state.selectedModel}
             selectedBocnice={state.selectedBocnice}
@@ -228,6 +228,16 @@ function AppContent({
             onToggle={toggleAccessory}
             isDisabled={isAccessoryDisabled}
           />
+
+          {/* Mobile-only inline visualizer */}
+          <aside className="visualizer-panel visualizer-panel--mobile" aria-label="Vizualizace konfigurace">
+            <RPGVisualizer
+              selectedModel={state.selectedModel}
+              selectedBocnice={state.selectedBocnice}
+              selectedAccessories={state.selectedAccessories}
+              availableAccessoryCategories={availableAccCategories}
+            />
+          </aside>
 
           <SummarySection
             price={priceBreakdown}
