@@ -879,6 +879,59 @@ body {
   color: var(--accent-orange);
 }
 
+/* Price bar right group */
+.price-bar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* VAT toggle in price bar */
+.vat-toggle {
+  display: flex;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.vat-toggle-btn {
+  background: none;
+  border: none;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--transition-normal), color var(--transition-normal);
+  white-space: nowrap;
+}
+
+.vat-toggle-btn:hover:not(.vat-toggle-btn--active) {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--accent-blue);
+}
+
+.vat-toggle-btn--active {
+  background: var(--accent-blue);
+  color: #fff;
+  cursor: default;
+}
+
+/* Small VAT note on individual prices */
+.price-vat-note {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* VAT note in summary */
+.summary-vat-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
 /* ===== SNACKBAR ===== */
 
 .snackbar-container {

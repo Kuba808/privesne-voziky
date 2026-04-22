@@ -1,29 +1,32 @@
 import type { PriceBreakdown } from '../types/configurator';
+import { applyVat, vatLabel } from '../utils/vat';
 
 interface SummarySectionProps {
   price: PriceBreakdown;
   configCode: string;
   isComplete: boolean;
   missingCategories: string[];
+  vatIncluded: boolean;
   onSaveCode: () => void;
   onDownloadPDF: () => void;
   onShareLink: () => void;
   onInquiry: () => void;
 }
 
-/**
- * Summary section showing full price breakdown and action buttons.
- */
 export function SummarySection({
   price,
   configCode,
   isComplete,
   missingCategories,
+  vatIncluded,
   onSaveCode,
   onDownloadPDF,
   onShareLink,
   onInquiry,
 }: SummarySectionProps) {
+  const fmtVal = (val: number) => `${applyVat(val, vatIncluded).toLocaleString('cs-CZ')} Kč`;
+  const note = <span className="price-vat-note">{vatLabel(vatIncluded)}</span>;
+
   return (
     <section className="config-section" id="section-souhrn">
       <h2 className="section-title">
@@ -37,25 +40,25 @@ export function SummarySection({
         <div className="price-line">
           <span className="price-line-label">Základní model</span>
           <span className="price-line-value">
-            {price.model > 0 ? `${price.model.toLocaleString('cs-CZ')} Kč` : '—'}
+            {price.model > 0 ? <>{fmtVal(price.model)}{note}</> : '—'}
           </span>
         </div>
         <div className="price-line">
           <span className="price-line-label">Rozměr</span>
           <span className="price-line-value">
-            {price.rozmer > 0 ? `+${price.rozmer.toLocaleString('cs-CZ')} Kč` : price.model > 0 ? 'v ceně' : '—'}
+            {price.rozmer > 0 ? <>{`+${fmtVal(price.rozmer)}`}{note}</> : price.model > 0 ? 'v ceně' : '—'}
           </span>
         </div>
         <div className="price-line">
           <span className="price-line-label">Podvozek</span>
           <span className="price-line-value">
-            {price.podvozek > 0 ? `+${price.podvozek.toLocaleString('cs-CZ')} Kč` : price.model > 0 ? 'v ceně' : '—'}
+            {price.podvozek > 0 ? <>{`+${fmtVal(price.podvozek)}`}{note}</> : price.model > 0 ? 'v ceně' : '—'}
           </span>
         </div>
         <div className="price-line">
           <span className="price-line-label">Bočnice</span>
           <span className="price-line-value">
-            {price.bocnice > 0 ? `+${price.bocnice.toLocaleString('cs-CZ')} Kč` : price.model > 0 ? 'v ceně' : '—'}
+            {price.bocnice > 0 ? <>{`+${fmtVal(price.bocnice)}`}{note}</> : price.model > 0 ? 'v ceně' : '—'}
           </span>
         </div>
 
@@ -64,7 +67,7 @@ export function SummarySection({
             <span className="price-line-label" style={{ paddingLeft: 12 }}>
               • {acc.name}
             </span>
-            <span className="price-line-value">+{acc.price.toLocaleString('cs-CZ')} Kč</span>
+            <span className="price-line-value">+{fmtVal(acc.price)}{note}</span>
           </div>
         ))}
 
@@ -72,7 +75,7 @@ export function SummarySection({
 
         <div className="price-line price-total">
           <span className="price-line-label">Celková cena</span>
-          <span className="price-line-value">{price.total.toLocaleString('cs-CZ')} Kč</span>
+          <span className="price-line-value">{fmtVal(price.total)}{note}</span>
         </div>
 
         {missingCategories.length > 0 && (

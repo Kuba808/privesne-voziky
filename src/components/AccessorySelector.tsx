@@ -1,14 +1,15 @@
 import type { Prislusenstvi } from '../types/configurator';
+import { applyVat, vatLabel } from '../utils/vat';
 
 interface AccessorySelectorProps {
   accessories: Prislusenstvi[];
   selected: Prislusenstvi[];
   requiredCategories: string[];
+  vatIncluded: boolean;
   onToggle: (accessory: Prislusenstvi) => void;
   isDisabled: (accessory: Prislusenstvi) => string | null;
 }
 
-/** Human readable category names */
 const CATEGORY_LABELS: Record<string, string> = {
   HYDRAULIKA: '⚙️ Hydraulika',
   NAJEZDY: '🔽 Nájezdy',
@@ -16,15 +17,11 @@ const CATEGORY_LABELS: Record<string, string> = {
   DOPLNEK: '🧰 Doplňky',
 };
 
-/**
- * Accessory selector grouped by category.
- * Shows required categories, handles dependencies, disables excluded items.
- * Each accessory card shows an image thumbnail if available.
- */
 export function AccessorySelector({
   accessories,
   selected,
   requiredCategories,
+  vatIncluded,
   onToggle,
   isDisabled,
 }: AccessorySelectorProps) {
@@ -42,14 +39,12 @@ export function AccessorySelector({
     );
   }
 
-  // Group by category
   const grouped = accessories.reduce<Record<string, Prislusenstvi[]>>((acc, item) => {
     if (!acc[item.kat]) acc[item.kat] = [];
     acc[item.kat].push(item);
     return acc;
   }, {});
 
-  // Sort: required categories first
   const sortedCategories = Object.keys(grouped).sort((a, b) => {
     const aReq = requiredCategories.includes(a) ? -1 : 0;
     const bReq = requiredCategories.includes(b) ? -1 : 0;
@@ -110,7 +105,8 @@ export function AccessorySelector({
                       )}
                     </div>
                     <div className="card-price">
-                      +{acc.cena_czk.toLocaleString('cs-CZ')} Kč
+                      +{applyVat(acc.cena_czk, vatIncluded).toLocaleString('cs-CZ')} Kč
+                      <span className="price-vat-note">{vatLabel(vatIncluded)}</span>
                     </div>
                   </button>
                 );

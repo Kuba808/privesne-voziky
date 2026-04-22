@@ -30,6 +30,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState(SECTIONS[0].id);
   const [showCodeModal, setShowCodeModal] = useState(false);
   const [showInquiry, setShowInquiry] = useState(false);
+  const [vatIncluded, setVatIncluded] = useState(true);
   const [snackbar, setSnackbar] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
   // Load data
@@ -72,7 +73,7 @@ export default function App() {
     );
   }
 
-  return <AppContent data={data} activeSection={activeSection} showCodeModal={showCodeModal} setShowCodeModal={setShowCodeModal} showInquiry={showInquiry} setShowInquiry={setShowInquiry} snackbar={snackbar} setSnackbar={setSnackbar} />;
+  return <AppContent data={data} activeSection={activeSection} showCodeModal={showCodeModal} setShowCodeModal={setShowCodeModal} showInquiry={showInquiry} setShowInquiry={setShowInquiry} vatIncluded={vatIncluded} onToggleVat={() => setVatIncluded(v => !v)} snackbar={snackbar} setSnackbar={setSnackbar} />;
 }
 
 function AppContent({
@@ -82,6 +83,8 @@ function AppContent({
   setShowCodeModal,
   showInquiry,
   setShowInquiry,
+  vatIncluded,
+  onToggleVat,
   snackbar,
   setSnackbar,
 }: {
@@ -91,6 +94,8 @@ function AppContent({
   setShowCodeModal: (v: boolean) => void;
   showInquiry: boolean;
   setShowInquiry: (v: boolean) => void;
+  vatIncluded: boolean;
+  onToggleVat: () => void;
   snackbar: { message: string; type: 'success' | 'error' | 'info' } | null;
   setSnackbar: (v: { message: string; type: 'success' | 'error' | 'info' } | null) => void;
 }) {
@@ -219,6 +224,7 @@ function AppContent({
             accessories={availableAccessories}
             selected={state.selectedAccessories}
             requiredCategories={requiredCategories}
+            vatIncluded={vatIncluded}
             onToggle={toggleAccessory}
             isDisabled={isAccessoryDisabled}
           />
@@ -228,6 +234,7 @@ function AppContent({
             configCode={configCode}
             isComplete={isComplete}
             missingCategories={missingCategories}
+            vatIncluded={vatIncluded}
             onSaveCode={() => setShowCodeModal(true)}
             onDownloadPDF={handleDownloadPDF}
             onShareLink={handleShareLink}
@@ -239,7 +246,7 @@ function AppContent({
       </main>
 
       {/* Sticky price footer */}
-      <PriceBar price={priceBreakdown} />
+      <PriceBar price={priceBreakdown} vatIncluded={vatIncluded} onToggleVat={onToggleVat} />
 
       {/* Config code modal */}
       {showCodeModal && (
