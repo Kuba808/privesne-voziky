@@ -14,14 +14,15 @@ interface RPGVisualizerProps {
  */
 const ACC_POSITIONS: Record<string, {
   box: { top?: string; bottom?: string; left?: string; right?: string };
-  anchorPct: { x: number; y: number }; 
+  anchorPct: { x: number; y: number };
+  anchorOffsetY?: number;
 }> = {
   OPT_03: { box: { bottom: '15%', left: '2%' }, anchorPct: { x: 0.3, y: 0.85 } },
   OPT_04: { box: { bottom: '15%', left: '2%' }, anchorPct: { x: 0.3, y: 0.85 } },
-  OPT_05: { box: { bottom: '8%', right: '2%' }, anchorPct: { x: 0.85, y: 0.8 } },
+  OPT_05: { box: { bottom: '8%', right: '2%' }, anchorPct: { x: 0.85, y: 0.8 }, anchorOffsetY: -140 },
   OPT_09: { box: { top: '5%', left: '2%' }, anchorPct: { x: 0.1, y: 0.3 } },
   OPT_11: { box: { top: '35%', left: '2%' }, anchorPct: { x: 0.05, y: 0.6 } },
-  OPT_12: { box: { bottom: '35%', right: '2%' }, anchorPct: { x: 0.95, y: 0.8 } },
+  OPT_12: { box: { bottom: '35%', right: '2%' }, anchorPct: { x: 0.95, y: 0.8 }, anchorOffsetY: -70 },
   OPT_13: { box: { bottom: '2%', left: '40%' }, anchorPct: { x: 0.5, y: 0.85 } },
 };
 
@@ -56,7 +57,7 @@ export function RPGVisualizer({ selectedModel, selectedBocnice, selectedAccessor
 
       // Anchor point on image
       const anchorX = imageRect.left - containerRect.left + imageRect.width * pos.anchorPct.x;
-      const anchorY = imageRect.top - containerRect.top + imageRect.height * pos.anchorPct.y;
+      const anchorY = imageRect.top - containerRect.top + imageRect.height * pos.anchorPct.y + (pos.anchorOffsetY ?? 0);
 
       // Center of box
       const boxCenterX = boxRect.left - containerRect.left + boxRect.width / 2;
@@ -108,11 +109,10 @@ export function RPGVisualizer({ selectedModel, selectedBocnice, selectedAccessor
 
   return (
     <div className="rpg-container" ref={containerRef}>
-      {/* SVG connector lines */}
+      {/* SVG connector lines (desktop/tablet) */}
       <svg className="rpg-svg-overlay" width="100%" height="100%">
         {lines.map((line) => {
-          const isActive = true; // All mapped lines are active as they represent selected accessories
-          // Bézier control points for a nice curve
+          const isActive = true;
           const midX = (line.x1 + line.x2) / 2;
           const midY = (line.y1 + line.y2) / 2;
           const dx = line.x2 - line.x1;
@@ -133,16 +133,18 @@ export function RPGVisualizer({ selectedModel, selectedBocnice, selectedAccessor
         })}
       </svg>
 
-      {/* Main model image */}
-      <img
-        ref={imageRef}
-        src={`${import.meta.env.BASE_URL}images/${selectedModel.id_model}.png`}
-        alt={selectedModel.nazev_modelu}
-        className="rpg-model-image"
-        onLoad={handleImageLoad}
-      />
+      {/* Model image */}
+      <div className="rpg-image-wrap">
+        <img
+          ref={imageRef}
+          src={`${import.meta.env.BASE_URL}images/${selectedModel.id_model}.png`}
+          alt={selectedModel.nazev_modelu}
+          className="rpg-model-image"
+          onLoad={handleImageLoad}
+        />
+      </div>
 
-      {/* Accessory boxes */}
+      {/* Accessory boxes (desktop/tablet) */}
       {selectedAccessories.map((acc) => {
         const pos = ACC_POSITIONS[acc.id_doplnek];
         if (!pos) return null;
@@ -161,6 +163,29 @@ export function RPGVisualizer({ selectedModel, selectedBocnice, selectedAccessor
           </div>
         );
       })}
+
+      {/* Mobile legend chips */}
+      {selectedAccessories.length > 0 && (
+        <ul className="rpg-legend" aria-label="Vybrané příslušenství">
+          {selectedAccessories.map((acc) => (
+            <li key={`chip-${acc.id_doplnek}`} className="rpg-legend-chip">
+              <svg
+                className="rpg-legend-icon"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <line x1="6" y1="2" x2="6" y2="10" />
+                <line x1="2" y1="6" x2="10" y2="6" />
+              </svg>
+              <span>{acc.nazev}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
