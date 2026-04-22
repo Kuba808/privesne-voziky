@@ -1,12 +1,13 @@
+import { useEffect, useRef } from 'react';
+
 interface SectionNavProps {
   sections: { id: string; label: string }[];
   activeSection: string;
 }
 
-/**
- * Sticky horizontal navigation bar that highlights the current section.
- */
 export function SectionNav({ sections, activeSection }: SectionNavProps) {
+  const navRef = useRef<HTMLElement>(null);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -14,8 +15,17 @@ export function SectionNav({ sections, activeSection }: SectionNavProps) {
     }
   };
 
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const activeBtn = nav.querySelector<HTMLButtonElement>('.section-nav-item.active');
+    if (activeBtn) {
+      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+  }, [activeSection]);
+
   return (
-    <nav className="section-nav" aria-label="Sekce konfigurátoru">
+    <nav className="section-nav" ref={navRef} aria-label="Sekce konfigurátoru">
       {sections.map((s) => (
         <button
           key={s.id}
