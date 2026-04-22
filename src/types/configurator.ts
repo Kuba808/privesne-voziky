@@ -8,6 +8,7 @@ export interface Model {
   vyloucena_kategorie: string;
   naprav: number;
   popis: string;
+  popis_technika?: string;
 }
 
 export interface Rozmer {

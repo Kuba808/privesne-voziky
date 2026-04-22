@@ -7,7 +7,8 @@
       "povinna_kategorie": "BOČNICE",
       "vyloucena_kategorie": "HYDRAULIKA",
       "naprav": 1,
-      "popis": "Klasika pro všechno."
+      "popis": "Klasika pro všechno.",
+      "popis_technika": "Jednonápravový přívěs na standardní tažné oko. Pevná ložná plocha, bočnice na výběr 30 nebo 40 cm. Bez brzd do 750 kg, s brzdami do 1 500 kg. Vhodný pro dřevo, zahradní odpad, stavební materiál nebo nábytek."
     },
     {
       "id_model": "M_02",
@@ -16,7 +17,8 @@
       "povinna_kategorie": "BOČNICE,HYDRAULIKA",
       "vyloucena_kategorie": "NASTAVBA",
       "naprav": 2,
-      "popis": "Sklápění dozadu nebo do stran."
+      "popis": "Sklápění dozadu nebo do stran.",
+      "popis_technika": "Dvounápravový přívěs s hydraulickým sklápěním dozadu nebo na obě strany. Pumpa manuální nebo elektrická (12 V). Nosnost až 3 500 kg. Ideální pro sypný materiál: zeminu, štěrk, písek nebo demoliční suť."
     },
     {
       "id_model": "M_03",
@@ -25,7 +27,8 @@
       "povinna_kategorie": "NAJEZDY,NAVIJAK,BOČNICE",
       "vyloucena_kategorie": "HYDRAULIKA",
       "naprav": 2,
-      "popis": "Nízký úhel pro auta."
+      "popis": "Nízký úhel pro auta.",
+      "popis_technika": "Dvounápravový nízkoložný přívěs. Nájezdový úhel do 8° díky nízkému rámu a sklápěcím rampám. Navijak pro vlečení nepojízdných vozidel. Nosnost až 3 500 kg. Vhodný pro osobní auta, quady, motocykly i UTV."
     },
     {
       "id_model": "M_04",
@@ -34,7 +37,8 @@
       "povinna_kategorie": "BOČNICE",
       "vyloucena_kategorie": "HYDRAULIKA",
       "naprav": 2,
-      "popis": "Univerzál s velkou ložnou plochou."
+      "popis": "Univerzál s velkou ložnou plochou.",
+      "popis_technika": "Dvounápravový přívěs s velkou variabilní ložnou plochou. Bočnice odnímatelné po úsecích. Nosnost až 3 500 kg. Vhodný pro zemědělskou techniku, palety, stavební stroje nebo kombinaci různorodého nákladu."
     }
   ],
   "rozmery": [

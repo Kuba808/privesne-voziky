@@ -380,6 +380,45 @@ body {
   filter: brightness(1.1);
 }
 
+/* Tech details panel below model grid */
+.model-tech-panel {
+  margin-top: var(--space-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.model-tech-panel-label {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: var(--space-xs);
+}
+
+.model-tech-panel-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 var(--space-xs);
+}
+
+.model-tech-panel-toggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition-normal);
+}
+
+.model-tech-panel-toggle:hover {
+  color: var(--accent-blue);
+}
+
 /* Accessory category group */
 .accessory-category {
   margin-bottom: var(--space-lg);

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import type { Model } from '../types/configurator';
 
 interface ModelSelectorProps {
@@ -6,10 +7,15 @@ interface ModelSelectorProps {
   onSelect: (model: Model) => void;
 }
 
-/**
- * Model selection cards with images, descriptions, and prices.
- */
+const PREVIEW_LEN = 110;
+
 export function ModelSelector({ models, selected, onSelect }: ModelSelectorProps) {
+  const [techExpanded, setTechExpanded] = useState(false);
+
+  useEffect(() => {
+    setTechExpanded(false);
+  }, [selected?.id_model]);
+
   return (
     <section className="config-section" id="section-model">
       <h2 className="section-title">
@@ -41,6 +47,25 @@ export function ModelSelector({ models, selected, onSelect }: ModelSelectorProps
           );
         })}
       </div>
+
+      {selected?.popis_technika && (
+        <div className="model-tech-panel">
+          <div className="model-tech-panel-label">Technické detaily — {selected.nazev_modelu}</div>
+          <p className="model-tech-panel-text">
+            {techExpanded || selected.popis_technika.length <= PREVIEW_LEN
+              ? selected.popis_technika
+              : selected.popis_technika.slice(0, PREVIEW_LEN) + '…'}
+          </p>
+          {selected.popis_technika.length > PREVIEW_LEN && (
+            <button
+              className="model-tech-panel-toggle"
+              onClick={() => setTechExpanded(!techExpanded)}
+            >
+              {techExpanded ? 'méně ▲' : 'více ▾'}
+            </button>
+          )}
+        </div>
+      )}
     </section>
   );
 }
