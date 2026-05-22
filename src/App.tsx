@@ -21,7 +21,9 @@ const SECTIONS = [
   { id: 'section-rozmer', label: 'Rozměr' },
   { id: 'section-podvozek', label: 'Podvozek' },
   { id: 'section-bocnice', label: 'Bočnice' },
-  { id: 'section-prislusenstvi', label: 'Příslušenství' },
+  { id: 'section-plachty', label: 'Plachty' },
+  { id: 'section-pokrocile', label: 'Pokročilé' },
+  { id: 'section-doplnky', label: 'Doplňky' },
   { id: 'section-souhrn', label: 'Souhrn' },
 ];
 
@@ -109,10 +111,11 @@ function AppContent({
     availableRozmery,
     availablePodvozky,
     availableBocnice,
-    availableAccessories,
+    modelAccessories,
+    accessoriesForSection,
     requiredCategories,
     isBocniceRequired,
-    isAccessoryDisabled,
+    getAvailability,
     priceBreakdown,
     configCode,
     missingCategories,
@@ -122,11 +125,11 @@ function AppContent({
 
   const shareUrl = useMemo(() => (configCode ? getShareUrl(configCode) : ''), [configCode]);
 
-  // Available accessory categories (unique from available accessories)
+  // Available accessory categories (unique from accessories visible for current model)
   const availableAccCategories = useMemo(() => {
-    const cats = new Set(availableAccessories.map((a) => a.kat));
+    const cats = new Set(modelAccessories.map((a) => a.kat));
     return Array.from(cats);
-  }, [availableAccessories]);
+  }, [modelAccessories]);
 
   const handleDownloadPDF = useCallback(async () => {
     if (isComplete && configCode) {
@@ -221,12 +224,44 @@ function AppContent({
           />
 
           <AccessorySelector
-            accessories={availableAccessories}
+            sectionId="section-plachty"
+            sectionNumber="05"
+            sectionTitle="Plachty a nástavby"
+            intro="Volitelná nástavba na vozík. Plachta vyžaduje plné bočnice."
+            accessories={accessoriesForSection('plachty')}
             selected={state.selectedAccessories}
+            selectedRozmer={state.selectedRozmer}
             requiredCategories={requiredCategories}
             vatIncluded={vatIncluded}
             onToggle={toggleAccessory}
-            isDisabled={isAccessoryDisabled}
+            getAvailability={getAvailability}
+          />
+
+          <AccessorySelector
+            sectionId="section-pokrocile"
+            sectionNumber="06"
+            sectionTitle="Pokročilé funkce"
+            intro="Hydraulika, nájezdy a navijáky pro speciální použití."
+            accessories={accessoriesForSection('pokrocile')}
+            selected={state.selectedAccessories}
+            selectedRozmer={state.selectedRozmer}
+            requiredCategories={requiredCategories}
+            vatIncluded={vatIncluded}
+            onToggle={toggleAccessory}
+            getAvailability={getAvailability}
+          />
+
+          <AccessorySelector
+            sectionId="section-doplnky"
+            sectionNumber="07"
+            sectionTitle="Doplňky"
+            accessories={accessoriesForSection('doplnky')}
+            selected={state.selectedAccessories}
+            selectedRozmer={state.selectedRozmer}
+            requiredCategories={requiredCategories}
+            vatIncluded={vatIncluded}
+            onToggle={toggleAccessory}
+            getAvailability={getAvailability}
           />
 
           {/* Mobile-only inline visualizer */}

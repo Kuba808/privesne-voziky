@@ -23,7 +23,7 @@ export function ModelSelector({ models, selected, onSelect }: ModelSelectorProps
         Vyberte model
       </h2>
       <div className="card-grid card-grid--models">
-        {models.map((model) => {
+        {models.filter(m => !m.skryto_v_vyberu).map((model) => {
           const isSelected = selected?.id_model === model.id_model;
           return (
             <button

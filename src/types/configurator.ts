@@ -7,6 +7,8 @@ export interface Model {
   povinna_kategorie: string;
   vyloucena_kategorie: string;
   naprav: number;
+  skryto_v_vyberu?: boolean;
+  default_prislusenstvi?: string[];
   popis: string;
   popis_technika?: string;
 }
@@ -39,14 +41,25 @@ export interface Bocnice {
   max_plocha_m2?: number;
 }
 
+export type SekceDoplnku = 'plachty' | 'pokrocile' | 'doplnky';
+export type ChovaniPriNesplneni = 'disabled' | 'hidden';
+
 export interface Prislusenstvi {
   id_doplnek: string;
   id_model: string;
   kat: string;
+  sekce: SekceDoplnku;
   nazev: string;
   cena_czk: number;
-  vyzaduje_id: string | null;
-  vylucuje_id: string | null;
+  /** When set, final price = max(min_cena_czk ?? 0, cena_czk + plocha_m2 * cena_za_m2_czk). */
+  cena_za_m2_czk?: number;
+  min_cena_czk?: number;
+  vyzaduje_id: string[];
+  vyzaduje_id_jeden_z: string[];
+  vyzaduje_bocnici_jeden_z: string[];
+  vylucuje_id: string[];
+  chovani_pri_nesplneni: ChovaniPriNesplneni;
+  hlaska_disabled: string;
   poznamka: string;
   image: string;
 }
@@ -74,4 +87,9 @@ export interface PriceBreakdown {
   bocnice: number;
   accessories: { name: string; price: number }[];
   total: number;
+}
+
+export interface AccessoryAvailability {
+  state: 'available' | 'disabled' | 'hidden';
+  reason: string;
 }
